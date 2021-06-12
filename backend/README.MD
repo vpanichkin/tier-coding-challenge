@@ -14,7 +14,7 @@
     npm start
 ```
 
-3. Visit [http://localhost:3000](http://localhost:3000/)
+3. Visit [http://localhost:8888](http://localhost:8888/)
 
 ## Testing
 1. To run test, use:
