@@ -1,30 +1,40 @@
 /* eslint no-unused-vars: 1 */
 
 import React, { useCallback, useState } from 'react';
+import { fetchShortenUrl } from '../services/fetchShortenUrl';
+import ShortenUrl from './ShortenUrl';
 
 const ShortenUrlForm = () => {
-    const [value, setValue] = useState('');
+    const [url, setUrl] = useState('');
+    const [shortenUrl, setShortenUrl] = useState('');
 
-    const onChange = useCallback((e) => {
-        // TODO: Set the component's new state based on the user's input
-    }, [/* TODO: Add necessary deps */]);
+    const onChange = event => setUrl(event.target.value);
 
-    const onSubmit = useCallback((e) => {
+    const onSubmit = useCallback(async (e) => {
         e.preventDefault();
-        // TODO: shorten url and copy to clipboard
-    }, [/* TODO: necessary deps */]);
+        const { errors, cutUrl } = await fetchShortenUrl(url);
+        if (errors) {
+            alert('Something went wrong. Provide a link or check the network connection');
+            return;
+        }
+        setShortenUrl(cutUrl);
+    }, [url]);
 
     return (
         <form onSubmit={onSubmit}>
             <label htmlFor="shorten">
                 Url:
-                <input placeholder="Url to shorten" id="shorten" type="text" value={value} onChange={onChange} />
+                <input
+                    placeholder="Url to shorten"
+                    id="shorten"
+                    type="text"
+                    name="url"
+                    value={url}
+                    onChange={onChange}
+                />
             </label>
             <input type="submit" value="Shorten and copy URL" />
-            {/* TODO: show below only when the url has been shortened and copied */}
-            <div>
-                {/* Show shortened url --- copied! */}
-            </div>
+            <ShortenUrl url={shortenUrl} />
         </form>
     );
 };

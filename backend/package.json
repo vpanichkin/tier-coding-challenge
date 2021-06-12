@@ -1,0 +1,27 @@
+{
+  "name": "link-shortener-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "start:development": "NODE_ENV=development node src/server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "express": "~4.16.1",
+    "express-validator": "^6.11.1",
+    "md5": "^2.3.0",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
+    "pug": "^3.0.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "jest": "^27.0.4",
+    "supertest": "^6.1.3"
+  }
+}

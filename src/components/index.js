@@ -1,3 +1,4 @@
 import ShortenUrlForm from './ShortenUrlForm';
+import ShortenUrl from './ShortenUrl';
 
-export { ShortenUrlForm };
+export { ShortenUrlForm, ShortenUrl };
